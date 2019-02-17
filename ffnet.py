@@ -429,7 +429,7 @@ class Munger:
 
     def _Args(self, story, outtype, filename):
         convertedFilename = filename.replace('.html', '.' + outtype)
-        std_args = ['', filename, convertedFilename]
+        std_args = [' ', filename, convertedFilename]
 
         if story.author != None:
             std_args += ['--authors', story.author]
