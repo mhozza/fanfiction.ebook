@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import io
 import os
 import re
@@ -18,7 +19,7 @@ setup(
 
     packages=find_packages(exclude=('tests', 'examples',)),
 
-    install_requires=[],
+    install_requires=['beautifulsoup4', 'pycurl'],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',        
