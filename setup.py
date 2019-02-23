@@ -19,7 +19,7 @@ setup(
 
     packages=find_packages(exclude=('tests', 'examples',)),
 
-    install_requires=['beautifulsoup4', 'pycurl'],
+    install_requires=['beautifulsoup4', 'pycurl', 'lxml'],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',        
