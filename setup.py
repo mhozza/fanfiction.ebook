@@ -9,8 +9,8 @@ from setuptools import setup
 
 setup(
     name="ff_ebook",
-    version="0.1.0",
-    url="https://github.com/mhozza/fanfiction.ebook",    
+    version="0.2.0",
+    url="https://github.com/mhozza/fanfiction.ebook",
 
     author="Neia Neutuladh, Michal Hozza",
     author_email="dhasenan@gmail.com, mhozza@gmail.com",
@@ -19,7 +19,7 @@ setup(
 
     packages=find_packages(exclude=('tests', 'examples',)),
 
-    install_requires=['beautifulsoup4', 'pycurl', 'lxml'],
+    install_requires=['beautifulsoup4', 'requests', 'lxml'],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',        
