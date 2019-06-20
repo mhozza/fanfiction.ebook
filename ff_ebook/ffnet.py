@@ -5,18 +5,13 @@
 
 import argparse
 import codecs
-import datetime
-import io
 import os
-import pycurl
 import re
+import requests
 import string
-import sys
 import time
 
 from bs4 import BeautifulSoup
-from bs4 import UnicodeDammit
-from io import StringIO
 
 class PortkeyAdapter:
     ReportRegex = re.compile('http.*portkey.*act=report.*')
@@ -447,18 +442,8 @@ class Munger:
     def DownloadChapter(self, chapter):
         print('retrieving chapter %s' % chapter)
         url = self.adapter.ChapterUrl(self.story_url, chapter)
-        buf = io.BytesIO()
-        c = pycurl.Curl()
-        c.setopt(pycurl.USERAGENT,
-                'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:8.0) Gecko/20100101 Firefox/8.0')
-        c.setopt(pycurl.URL, url)
-        c.setopt(pycurl.WRITEFUNCTION, buf.write)
-        c.setopt(pycurl.FOLLOWLOCATION, 1)
-        c.perform()
-        raw_content = buf.getvalue()
-        buf.close()
-        text = UnicodeDammit(raw_content, smart_quotes_to="html").unicode_markup
-        return BeautifulSoup(text)
+        response = requests.get(url)
+        return BeautifulSoup(response.text)
 
 
 all_adapters = [PortkeyAdapter(), FFNetAdapter(), BbForumAdapter(), FictionHuntAdapter()]
