@@ -19,7 +19,7 @@ setup(
 
     packages=find_packages(exclude=('tests', 'examples',)),
 
-    install_requires=['beautifulsoup4', 'requests', 'lxml'],
+    install_requires=['beautifulsoup4', 'requests',],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',        
