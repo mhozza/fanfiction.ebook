@@ -117,8 +117,8 @@ class FFNetAdapter:
             return ""
         for s in select.findAll("option"):
             for k, v in s.attrs.items():
-                if k == "selected":
-                    return "Chapter " + (s.string)
+                if k == "selected" and s.string is not None:
+                    return f"Chapter {s.string}"
         return "Missing chapter title"
 
     def ChapterContents(self, page_soup):
