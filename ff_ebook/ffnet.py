@@ -118,7 +118,7 @@ class FFNetAdapter:
         for s in select.findAll("option"):
             for k, v in s.attrs.items():
                 if k == "selected":
-                    return u"Chapter " + (s.string)
+                    return "Chapter " + (s.string)
         return "Missing chapter title"
 
     def ChapterContents(self, page_soup):
@@ -253,16 +253,16 @@ class ParagraphCleaner:
             # And [letter]'[letter] is always an apostrophe, which should be rendered as a right quote
             s = ""
             orig = (
-                node.string.replace(u"--", u"\u2013")
-                .replace(u"...", u"\u2026")
-                .replace(u"â€”", u"\u2014")
+                node.string.replace("--", "\u2013")
+                .replace("...", "\u2026")
+                .replace("â€”", "\u2014")
             )
             for i in range(len(orig)):
                 c = orig[i]
                 if c == "'":
-                    s += self.Requote(orig, i, u"\u2018", u"\u2019")
+                    s += self.Requote(orig, i, "\u2018", "\u2019")
                 elif c == '"':
-                    s += self.Requote(orig, i, u"\u201c", u"\u201d")
+                    s += self.Requote(orig, i, "\u201c", "\u201d")
                 else:
                     s += c
             node.replaceWith(s)
